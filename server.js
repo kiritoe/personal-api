@@ -23,6 +23,10 @@ var port = process.argv[2] || 3000;
 app.use('/', bodyParser.json());
 app.use('/', cors());
 
+/* Middelware to render all of our public files. Any files of
+the public folder will be renderd if you use them*/
+app.use(express.static(__dirname + '/public'));
+
 // var allowCrossDomain = function(req, res, next) { 
 // 	res.header('Access-Control-Allow-Origin', '*'); 
 // 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'); 

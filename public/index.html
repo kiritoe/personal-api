@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="personalApi">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Personal API</title>
+		<link rel="stylesheet" href="./styles/styles.css">
+	</head>
+	<body>
+		<!-- Routing -->
+		<div class="wrapper">
+			<ng-view></ng-view>
+		</div>
+
+		<!-- Angular Core Library -->
+		<script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+		<!-- Angular Routing Library -->
+		<script src="https://code.angularjs.org/1.4.3/angular-route.js"></script>
+		<!-- Angular Module --> 
+		<script src="./js/app.js"></script>
+		<!-- Angular Services -->
+		<script src="./js/services/networkService.js"></script>
+		<!-- Angular Controllers -->
+		<script src="./js/controllers/homeCtrl.js"></script>
+		<script src="./js/controllers/meCtrl.js"></script>
+		<script src="./js/controllers/skillsCtrl.js"></script>
+	</body>
+</html>
