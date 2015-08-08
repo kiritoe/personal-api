@@ -1,16 +1,6 @@
 'use strict';
 
 //#####################################################
-//Personal Information:
-//#####################################################
-var name = {name: 'Philipp Schulte'};
-var location = {location: 'Provo, UT'};
-var hobbies = ['Programming', 'Fussball', 'Ping Pong'];
-var occupations = ['Student', 'Bridge Engineer', 'Student'];
-var mentions = ['https://www.linkedin.com/pub/philipp-schulte/b5/9b4/180'];
-var references = ['Polina Marchenko', 'Reinhard Schulz', 'Michael Fischer'];
-
-//#####################################################
 //Dependencies:
 //#####################################################
 var express = require('express');
@@ -32,6 +22,35 @@ var port = process.argv[2] || 3000;
 //#####################################################
 app.use('/', bodyParser.json());
 app.use('/', cors());
+
+// var allowCrossDomain = function(req, res, next) { 
+// 	res.header('Access-Control-Allow-Origin', '*'); 
+// 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'); 
+// 	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); 
+
+// 	// intercept OPTIONS method 
+// 	if ('OPTIONS' === req.method) { 
+// 		res.send(200); 
+// 	} else { 
+// 		next(); 
+// 	}
+// };
+// app.use(allowCrossDomain);
+
+//#####################################################
+//Custom functions:
+//#####################################################
+var experience = function(arr, experience) {
+	var container = [];
+	for (var i = 0; i < arr.length; i++) {
+		for (var key in arr[i]) {
+			if (arr[i][key] === experience) {
+				container.push(arr[i]);
+			}
+		}
+	}
+	return container;
+};
 
 //#####################################################
 //Routes:
@@ -101,6 +120,31 @@ app.post('/api/occupations', function(req, res) {
 	res.json({occupations: occupations});
 });
 
+//GET - POST /api/skills: (Postman: localhost:3000/api/skills?experience=Intermediate)
+app.route('/api/skills')
+	.get(function(req, res) {
+		switch (req.query.experience) {
+			case 'Beginner':
+				res.json({skills: experience(skills, 'Beginner')});
+				break;
+			case 'Intermediate':
+				res.json({skills: experience(skills, 'Intermediate')});
+				break;
+			case 'Advance':
+				res.json({skills: experience(skills, 'Advance')});
+				break;
+			case 'Professional':
+				res.json({skills: experience(skills, 'Professional')});
+				break;
+			default:
+				res.json({skills: skills});
+		}
+	})
+	.post(function(req, res) {
+		skills.push(req.body);
+		res.json({skills: skills});
+});
+
 //#####################################################
 //Starting server:
 //#####################################################
@@ -111,3 +155,40 @@ app.listen(port, function(err) {
 		console.log('Listening on port: ' + port);
 	}
 });
+
+//#####################################################
+//Personal Information:
+//#####################################################
+var name = {name: 'Philipp Schulte'};
+var location = {location: 'Provo, UT'};
+var hobbies = ['Programming', 'Fussball', 'Ping Pong'];
+var occupations = ['Student', 'Bridge Engineer', 'Student'];
+var mentions = ['https://www.linkedin.com/pub/philipp-schulte/b5/9b4/180'];
+var references = ['Polina Marchenko', 'Reinhard Schulz', 'Michael Fischer'];
+var skills = [
+  {
+    id: 1,
+    name: 'JavaScript',
+    experience: 'Advance'
+  },
+  {
+    id: 2,
+    name: 'AngularJS',
+    experience: 'Intermediate'
+  },
+  {
+    id: 2,
+    name: 'Firebase',
+    experience: 'Beginner'
+  },
+  {
+    id: 3,
+    name: 'node.js',
+    experience: 'Beginner'
+  },
+  {
+    id: 4,
+    name: 'MongoDB',
+    experience: 'Beginner'
+  }
+];
