@@ -63,7 +63,7 @@ app.get('/api/occupations/latest', function(req, res) {
 	res.json({latestOccupation: occupations[occupations.length - 1]});  
 });
 
-//GET /api/occupations:
+//GET /api/occupations: (Postman: localhost:3000/api/occupations?order=asc)
 app.get('/api/occupations', function(req, res) {
 	switch (req.query.order) {
 		case 'desc':
@@ -77,8 +77,32 @@ app.get('/api/occupations', function(req, res) {
 	}
 });
 
+//PUT /api/name:
+app.put('/api/name', function(req, res) {
+	name = req.body;
+	res.json(name);
+});
+
+//PUT /api/location:
+app.put('/api/location', function(req, res) {
+	location = req.body;
+	res.json(location);
+});
+
+//POST /api/hobbies:
+app.post('/api/hobbies', function(req, res) {
+	hobbies.push(req.body.hobbies);
+	res.json({hobbies: hobbies});
+});
+
+//POST /api/occupations:
+app.post('/api/occupations', function(req, res) {
+	occupations.push(req.body.occupations);
+	res.json({occupations: occupations});
+});
+
 //#####################################################
-//Connection to server:
+//Starting server:
 //#####################################################
 app.listen(port, function(err) {
 	if(err) {
