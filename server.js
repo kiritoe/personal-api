@@ -39,7 +39,7 @@ app.use(express.static(__dirname + '/public'));
 // 		next(); 
 // 	}
 // };
-// app.use(allowCrossDomain);
+// app.use('/', allowCrossDomain);
 
 //#####################################################
 //Custom functions:
@@ -166,7 +166,7 @@ app.listen(port, function(err) {
 var name = {name: 'Philipp Schulte'};
 var location = {location: 'Provo, UT'};
 var hobbies = ['Programming', 'Fussball', 'Ping Pong'];
-var occupations = ['Student', 'Bridge Engineer', 'Student'];
+var occupations = ['Student', 'Bridge Engineer', 'Software Engineer'];
 var mentions = ['https://www.linkedin.com/pub/philipp-schulte/b5/9b4/180'];
 var references = ['Polina Marchenko', 'Reinhard Schulz', 'Michael Fischer'];
 var skills = [
