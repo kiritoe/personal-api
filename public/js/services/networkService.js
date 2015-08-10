@@ -74,5 +74,36 @@ app.service('networkService', ['$q', '$http', function($q, $http) {
   		return dfd.promise;
 	};
 
+	//#####################################################
+	//PUT name, location:
+	//#####################################################
+	this.updateInfo = function(info, update) {
+		
+		var url = '';
+
+		switch (info) {
+			case 'name':
+				url = 'http://localhost:3000/api/name';
+				break;
+			case 'location':
+				url = 'http://localhost:3000/api/location';
+		}
+
+		var dfd = $q.defer();
+
+		$http({
+			method: 'PUT',
+			url: url,
+			data: update
+		}).then(function(response) {
+			//console.log(response.data);
+			dfd.resolve(response.data);
+	  	}, function(error) {
+			console.log('Error: ' + error);
+	  	});
+
+  		return dfd.promise;
+	};
+
 
 }]);

@@ -18,4 +18,16 @@ app.controller('homeCtrl', ['$scope', 'networkService', function($scope, network
 
 	getLocation();
 
+	$scope.changeName = function() {
+		networkService.updateInfo('name', {name: $scope.newName}).then(function(data) {
+			$scope.name = data.name;
+		});
+	};
+
+	$scope.changeLocation = function() {
+		networkService.updateInfo('location', {location: $scope.newLocation}).then(function(data) {
+			$scope.location = data.location;
+		});
+	};
+
 }]);
