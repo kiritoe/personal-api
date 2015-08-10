@@ -166,7 +166,7 @@ app.listen(port, function(err) {
 var name = {name: 'Philipp Schulte'};
 var location = {location: 'Provo, UT'};
 var hobbies = ['Programming', 'Fussball', 'Ping Pong'];
-var occupations = ['Student', 'Bridge Engineer', 'Software Engineer'];
+var occupations = ['Student', 'Bridge Engineer', 'Mentor'];
 var mentions = ['https://www.linkedin.com/pub/philipp-schulte/b5/9b4/180'];
 var references = ['Polina Marchenko', 'Reinhard Schulz', 'Michael Fischer'];
 var skills = [

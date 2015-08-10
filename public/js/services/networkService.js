@@ -18,6 +18,9 @@ app.service('networkService', ['$q', '$http', function($q, $http) {
 				break;
 			case 'hobbies':
 				url = 'http://localhost:3000/api/hobbies';
+				break;
+			case 'skills':
+				url = 'http://localhost:3000/api/skills';
 		}
 
 		var dfd = $q.defer();
@@ -48,6 +51,9 @@ app.service('networkService', ['$q', '$http', function($q, $http) {
 				break;
 			case 'asc':
 				url = 'http://localhost:3000/api/occupations?order=asc';
+				break;
+			case 'latest':
+				url = 'http://localhost:3000/api/occupations/latest';
 				break;
 			default:
 				url = 'http://localhost:3000/api/occupations';

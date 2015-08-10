@@ -17,4 +17,13 @@ app.controller('meCtrl', ['$scope', 'networkService', function($scope, networkSe
 	};
 
 	getOccupations();
+
+	var getLatestOccupation = function() {
+		networkService.getOccupations('latest').then(function(data) {
+			$scope.latestOccupation = data.latestOccupation;
+		});
+	};
+
+	getLatestOccupation();
+
 }]);
