@@ -10,13 +10,27 @@ app.controller('meCtrl', ['$scope', 'networkService', function($scope, networkSe
 
 	getHobbies();
 
-	var getOccupations = function() {
-		networkService.getOccupations('').then(function(data) {
+	var getOccupations = function(order) {
+		networkService.getOccupations(order).then(function(data) {
 			$scope.occupations = data.occupations;
 		});
 	};
 
-	getOccupations();
+	$scope.getOccupations = function(order) {
+		switch ($scope.order) {
+			case undefined:
+				networkService.getOccupations(order).then(function(data) {
+					$scope.occupations = data.occupations;
+				});
+				break;
+			case order:
+				networkService.getOccupations(order).then(function(data) {
+					$scope.occupations = data.occupations;
+				});
+		}
+	};
+
+	$scope.getOccupations($scope.order);
 
 	var getLatestOccupation = function() {
 		networkService.getOccupations('latest').then(function(data) {

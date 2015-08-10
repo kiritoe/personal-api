@@ -13,4 +13,11 @@
 		<li ng-repeat="occupation in occupations">{{occupation}}</li>
 	</ul>
 
-<h4>Obviously my last occupation is:  {{latestOccupation}}</h4>
+	<h4>You are able to change the order of the list by using the drop down menu!</h4>
+
+  	<select ng-model="order" ng-change="getOccupations(order)">
+    	<option value="desc">Descending</option>
+    	<option value="asc">Ascending</option>
+  	</select>
+
+<h4>My last occupation is:  {{latestOccupation}}</h4>
